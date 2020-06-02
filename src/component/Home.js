@@ -2,6 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import config from '../config/config';
+
 import "../css/Home.css";
 
 const Home = () => {
@@ -31,7 +33,7 @@ const Home = () => {
         }
 
         await axios
-            .post("/login", {
+            .post(config.webHost + "/login", {
                 email,
                 pw,
             })
