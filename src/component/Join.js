@@ -1,4 +1,6 @@
 import React, {useState, useEffect, Fragment} from "react";
+import config from '../config/config';
+
 import "../css/Join.css";
 
 import axios from "axios";
@@ -32,7 +34,7 @@ import axios from "axios";
         }   
 
        await axios
-       .post("/join", {
+       .post(config.webHost + "/join", {
            email,
            pw,
            name,
