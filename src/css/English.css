@@ -1,0 +1,123 @@
+.englishDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.englishHeadfContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.englishCenterContainer {
+    width: 100%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.englishBottomContainer {
+    width: 100%;
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.englishTextArea {
+    width: 80%;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.englishBtnDiv {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.englishBtn {
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.checkBtn:active,
+.englishBtn:active {
+    transform: scale(0.8);
+}
+
+.deleteBtn,
+.checkBtn {
+    margin-left: 7px;
+    margin-right: 7px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+}
+
+.containerDiv {
+    border-style: solid;
+    border-color: darkgrey;
+    border-radius: 50px;
+    padding: 5px;
+    color: white;
+    background-color: darkgrey;
+    box-shadow: 0px 0px 3px 3px black;
+    width: 80%;
+}
+
+@media (min-width: 414px) { 
+    #todayEnglish {
+        font-size: 40px;
+    }
+
+    .englishTextArea{
+        width: 800px;
+        font-size: 20px;
+        resize: none;
+    }
+
+    .englishBtn{
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .containerDiv {
+        padding: 10px;
+    }
+
+    .contentSpan {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .containerDiv {
+        width: 1000px;
+    }
+
+    .checkBtn,
+    .deleteBtn {
+        font-size: 20px;
+        width: 30px;
+        cursor: pointer;
+    } 
+}

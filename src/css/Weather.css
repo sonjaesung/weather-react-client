@@ -1,0 +1,47 @@
+.weatherGradient {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.harfContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.harfContainer.bottom {
+    justify-content: flex-start;
+}
+
+.temp {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+}
+
+.country {
+    font-size: 44px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.title {
+    font-size: 44px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.subTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}

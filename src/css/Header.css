@@ -1,0 +1,70 @@
+.headerDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(12, 212, 119);
+}
+
+.leftHead {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cetnerHead {
+    width: 100%;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightHead {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.menuBtn {
+    background-color: rgb(12, 212, 119);
+    padding: 0;
+    border: none;
+}
+
+.menuImg,
+.homeImg {
+    width: 30%;
+    height: 30%;
+    margin: 10px;
+}
+
+.headTitle {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@media (min-width: 414px) { 
+    .headTitle {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .menuImg,
+    .homeImg {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+    } 
+
+    .menuBtn {
+        cursor: pointer;
+    }
+}

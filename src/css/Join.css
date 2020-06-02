@@ -1,0 +1,70 @@
+.joinDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.joinContainerTop {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 25px;
+    background-color: rgb(240, 240, 240);
+}
+
+.joinContainerBottom {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.joinInput {
+    margin: 15px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: blueviolet;
+    border-radius: 50px;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    width: 80%;
+}
+
+.genderDiv {
+    margin: 15px;
+}
+
+.genderFieldset {
+    border-style: solid;
+    border-color: blueviolet;
+    border-radius: 50px;
+    background-color: white;
+}
+
+.genderDiv label {
+    margin: 20px;
+}
+
+.joinBtn {
+    margin: 20px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 10px 5px 10px;
+}

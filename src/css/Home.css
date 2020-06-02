@@ -1,0 +1,118 @@
+.homeDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeContainerHeader {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeContainerCenter {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.homeContainerBottom {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.clockSpan {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.homeInput {
+    margin: 10px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: blueviolet;
+    border-radius: 50px;
+    color: black;
+    padding: 5px;
+    text-align: center;
+}
+
+.loginBtn {
+    margin: 10px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.homeBtnDiv {
+    margin-top: 30px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.homeBtnDiv .btn {
+    margin: 10px;
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(79, 183, 231);
+    color: rgb(79, 183, 231);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 3px 3px 0px 0px black;
+    width: 95%;
+}
+
+.homeBtn:active, 
+.homeBtnDiv .btn:active {
+    transform: translateY(2px);
+}
+
+@media (min-width: 414px) { 
+    .clockSpan {
+        font-size: 80px;
+        font-weight: 800;
+    }
+
+    .homeInput {
+        width: 600px;
+        font-size: 20px;
+    }
+
+    .loginBtn {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .homeBtnDiv {
+        margin-top: 30px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homeBtnDiv .btn {
+        font-size: 20px;
+        cursor: pointer;
+        width: 100%;
+    }
+}

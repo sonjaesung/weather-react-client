@@ -1,0 +1,84 @@
+.leftMenuDiv {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.3s;
+    background-color: whitesmoke;
+}
+
+.menuHead {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: wheat;
+}
+
+.menuHeadLeft {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.menuHeadCenter {
+    width: 100%;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuHeadRight {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.menuExitBtn {
+    padding: 0;
+    border: none;
+    background-color: wheat;
+}
+
+.menuExitImg {
+    width: 30%;
+    height: 30%;
+    margin: 10px;
+}
+
+.menuTitle {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.menuContent {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border-style: outset;
+    margin-bottom: 5px;
+}
+
+.linkStyle {
+    font-size: 15px;
+    text-decoration: none;
+}
+
+@media (min-width: 414px) { 
+    .menuContent .linkStyle .linkSpan {
+        font-size: 20px;
+    }
+
+    .menuExitBtn {
+        cursor: pointer;
+    }
+}
