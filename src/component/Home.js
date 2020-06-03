@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from 'universal-cookie';
 
 import config from '../config/config';
 
@@ -8,6 +9,8 @@ import "../css/Home.css";
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
+    const cookies = new Cookies();
+
 
     useEffect(() => {
         let headerTitle = document.querySelector(".headTitle");
@@ -46,7 +49,9 @@ const Home = () => {
                     alert('로그인실패!! 다시 입력해 주세요');
                 }
                 else{
-                    alert(result.name + '님 환영합니다!!');
+                    cookies.set('user', result.token);
+                    //res.cookie("user", result.token);
+                    alert(result.user.name + '님 환영합니다!!');
                 }
             });
     };
