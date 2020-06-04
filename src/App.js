@@ -69,6 +69,7 @@ const App = () => {
                     coords: { latitude, longitude },
                 } = position;
 
+                console.log(latitude, longitude);
                 getWeather(latitude, longitude);
             });
         } catch (err) {
