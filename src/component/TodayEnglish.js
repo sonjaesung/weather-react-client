@@ -2,11 +2,15 @@ import React, { Fragment, useState, useEffect } from "react";
 
 import "../css/English.css";
 import config from '../config/config';
+
 import axios from "axios";
+import Cookies from 'universal-cookie';
 
 const TodayEnglish = () => {
     const [todayEnglish, setTodayEnglis] = useState("");
     const [englishArray, setEnglishArray] = useState([]);
+    const cookies = new Cookies();
+
 
     const setLocalStorage = (data) => {
         localStorage.setItem("english", JSON.stringify(data));
@@ -102,11 +106,17 @@ const TodayEnglish = () => {
             document.querySelector("#todayEnglish").innerText = todayEnglish;
         } else {
             setTodayEnglish();
-            await axios
-            .get(config.webHost + "/todayEnglish")
-            .then(function (res) {
-                console.log(res);
-            });
+            try{   
+                await axios
+                .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
+                    withCredentials: true
+                })
+                .then(function (res) {
+                    console.log(res);
+                });
+            } catch (err) {
+                alert('로그인 이후 사용 가능합니다');
+            }
         }
     };
 

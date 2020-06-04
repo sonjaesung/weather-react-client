@@ -50,7 +50,6 @@ const Home = () => {
                 }
                 else{
                     cookies.set('user', result.token);
-                    //res.cookie("user", result.token);
                     alert(result.user.name + '님 환영합니다!!');
                 }
             });
