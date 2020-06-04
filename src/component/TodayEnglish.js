@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 
 import "../css/English.css";
+import config from '../config/config';
+import axios from "axios";
 
 const TodayEnglish = () => {
     const [todayEnglish, setTodayEnglis] = useState("");
@@ -48,7 +50,7 @@ const TodayEnglish = () => {
         }
     };
 
-    const writeEnglish = () => {
+    const writeEnglish = async () => {
         const text = document.getElementById("englishTextArea").value;
         if (!textAreaValidation(text)) {
             alert("내용을 입력하세요");
@@ -67,17 +69,44 @@ const TodayEnglish = () => {
             tempArr = JSON.parse(localStorage.getItem("english"));
         }
 
+        /*
+        await axios
+            .post(config.webHost + "/todayEnglish", {
+                email,
+                pw,
+            })
+            .then(function (res) {
+                let result = res.data;
+                console.log(res);
+
+                if(result === null)
+                {
+                    alert('로그인실패!! 다시 입력해 주세요');
+                }
+                else{
+                    cookies.set('user', result.token);
+                    //res.cookie("user", result.token);
+                    alert(result.user.name + '님 환영합니다!!');
+                }
+            });
+            */
+
         tempArr.push(textObj);
         setEnglishArray(tempArr);
         setTodayEnglis(text);
         document.getElementById("englishTextArea").value = "";
     };
 
-    const renderTodayEnglish = () => {
+    const renderTodayEnglish = async () => {
         if (todayEnglish !== "") {
             document.querySelector("#todayEnglish").innerText = todayEnglish;
         } else {
             setTodayEnglish();
+            await axios
+            .get(config.webHost + "/todayEnglish")
+            .then(function (res) {
+                console.log(res);
+            });
         }
     };
 
