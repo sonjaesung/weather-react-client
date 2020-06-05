@@ -64,13 +64,18 @@ const App = () => {
 
     const getLocation = () => {
         try {
+            // http 에서 불가능하기때문에 일단 고정좌표로 출력하고 https 로 변경하거나 좌표리스트 작성예정.
+            /*
             navigator.geolocation.getCurrentPosition(async (position) => {
                 let {
                     coords: { latitude, longitude },
                 } = position;
 
+                console.log(latitude, longitude);
                 getWeather(latitude, longitude);
             });
+            */
+           getWeather(37.5, 127.1);
         } catch (err) {
             alert(err);
         }

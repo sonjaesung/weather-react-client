@@ -36,7 +36,7 @@ const Home = () => {
         }
 
         await axios
-            .post(config.webHost + "/login", {
+            .post(config.webHost + "/login" /*'http://localhost:3000/login'*/, {
                 email,
                 pw,
             })
