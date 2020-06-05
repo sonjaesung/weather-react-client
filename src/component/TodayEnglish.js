@@ -108,8 +108,10 @@ const TodayEnglish = () => {
             setTodayEnglish();
             try{   
                 await axios
-                .get(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
-                    withCredentials: true
+                .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
+                    params: {
+                        token: cookies.get('user'),
+                    }
                 })
                 .then(function (res) {
                     console.log(res);
