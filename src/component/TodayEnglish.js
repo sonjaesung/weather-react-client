@@ -109,7 +109,7 @@ const TodayEnglish = () => {
             try{   
                 await axios
                 .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
-                    withCredentials: true
+                    credentials: true
                 })
                 .then(function (res) {
                     console.log(res);
