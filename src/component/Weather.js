@@ -2,6 +2,11 @@ import React, {useEffect} from "react";
 import { Gradient } from "react-gradient";
 import "../css/Weather.css";
 
+import config from '../config/config';
+
+import axios from "axios";
+import Cookies from 'universal-cookie';
+
 let weatherOption = {
     Thunderstorm: {
         gradient: [["#544a7d", "#ffd452"]],
@@ -108,13 +113,30 @@ let weatherOption = {
 };
 
 export default function Weather({ temp, weather, country, temp_max, temp_min, humidity, feels_like }) {
+    const cookies = new Cookies();
+    
     useEffect(() => {
         let headerTitle = document.querySelector('.headTitle');
         headerTitle.innerText = '오늘의 날씨';
         renderWeather();
     });
 
-    const renderWeather = () => {
+    const renderWeather = async () => {
+        try{   
+            await axios
+            .get(config.webHost + "/weather" /*'http://localhost:3000/weather'*/, {
+                params: {
+                    token: cookies.get('user'),
+                }
+            })
+            .then(function (res) {
+                console.log(res);
+            });
+        } catch (err) {
+            alert('로그인 이후 사용 가능합니다');
+            window.location.href = './';
+        }
+        
         let currentTemp = document.querySelector('.temp');
         let tempHtml = '';
         const { innerWidth: width } = window;

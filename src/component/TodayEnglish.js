@@ -105,7 +105,6 @@ const TodayEnglish = () => {
         if (todayEnglish !== "") {
             document.querySelector("#todayEnglish").innerText = todayEnglish;
         } else {
-            setTodayEnglish();
             try{   
                 await axios
                 .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
@@ -115,6 +114,7 @@ const TodayEnglish = () => {
                 })
                 .then(function (res) {
                     console.log(res);
+                    setTodayEnglish();
                 });
             } catch (err) {
                 alert('로그인 이후 사용 가능합니다');

@@ -16,7 +16,9 @@
     justify-content: center;
 }
 
-.homeContainerCenter {
+.homeContainerCenter,
+.noneLogin,
+.login {
     width: 100%;
     flex: 1;
     display: flex;
@@ -61,11 +63,28 @@
     padding: 5px;
 }
 
-.homeBtnDiv {
+.homeBtnDiv,
+.listDiv {
     margin-top: 30px;
     width: 70%;
     display: flex;
     flex-direction: column;
+}
+
+.listDiv {
+    text-align: center;
+    font-size: 30px;
+}
+
+.listDiv li {
+    margin: 10px;
+    color: blueviolet;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.login span {
+    font-size: 20px;
 }
 
 .homeBtnDiv .btn {

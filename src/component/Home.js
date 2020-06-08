@@ -23,6 +23,10 @@ const Home = () => {
         };
     });
 
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
     const getTime = () => {
         setCurrentTime(new Date());
     };
@@ -30,6 +34,8 @@ const Home = () => {
     const clickLogin = async () => {
         const email = document.getElementById("email").value;
         const pw = document.getElementById("pw").value;
+        let loginDiv = document.querySelector(".login");
+        let noneLoginDiv = document.querySelector(".noneLogin");
 
         if (!validation(email, pw)) {
             return;
@@ -47,10 +53,14 @@ const Home = () => {
                 if(result === null)
                 {
                     alert('로그인실패!! 다시 입력해 주세요');
+                    loginDiv.style.display = 'none';
+                    noneLoginDiv.style.display = 'flex';
                 }
                 else{
                     cookies.set('user', result.token);
                     alert(result.user.name + '님 환영합니다!!');
+                    loginDiv.style.display = 'flex';
+                    noneLoginDiv.style.display = 'none';
                 }
             });
     };
@@ -67,6 +77,28 @@ const Home = () => {
         }
     };
 
+    const checkLogin = async () => {
+        let loginDiv = document.querySelector(".login");
+        let noneLoginDiv = document.querySelector(".noneLogin");
+
+        try{
+            await axios
+                .get(config.webHost + "/login" /*'http://localhost:3000/login'*/, {
+                    params: {
+                        token: cookies.get('user'),
+                    }
+                })
+                .then(function (res) {
+                    loginDiv.style.display = 'flex';
+                    noneLoginDiv.style.display = 'none';
+                });
+        }
+        catch (err) {
+            loginDiv.style.display = 'none';
+            noneLoginDiv.style.display = 'flex';
+        }
+    }
+
     return (
         <Fragment>
             <div className="homeDiv">
@@ -76,21 +108,32 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="homeContainerCenter">
-                    <input placeholder="E-Mail 을 입력하세요" type="email" className="homeInput" id="email" />
-                    <input placeholder="비밀번호를 입력하세요" type="password" className="homeInput" id="pw" />
-                    <button className="loginBtn" onClick={clickLogin}>
-                        Login
-                    </button>
-                    <div className="homeBtnDiv">
-                        <Link className="linkStyle" to="/Join">
-                            <button className="btn">회원가입</button>
-                        </Link>
-                        <Link className="linkStyle" to="/Find-Email">
-                            <button className="btn">이메일 찾기</button>
-                        </Link>
-                        <Link className="linkStyle" to="/Reset-Pw">
-                            <button className="btn">비밀번호 재설정</button>
-                        </Link>
+                    <div className="noneLogin">
+                        <input placeholder="E-Mail 을 입력하세요" type="email" className="homeInput" id="email" />
+                        <input placeholder="비밀번호를 입력하세요" type="password" className="homeInput" id="pw" />
+                        <button className="loginBtn" onClick={clickLogin}>
+                            Login
+                        </button>
+                        <div className="homeBtnDiv">
+                            <Link className="linkStyle" to="/Join">
+                                <button className="btn">회원가입</button>
+                            </Link>
+                            <Link className="linkStyle" to="/Find-Email">
+                                <button className="btn">이메일 찾기</button>
+                            </Link>
+                            <Link className="linkStyle" to="/Reset-Pw">
+                                <button className="btn">비밀번호 재설정</button>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="login">
+                        <span id='nameSpan'></span>
+                        <span>해당 웹 페이지는 포트폴리오 작성으로 업데이트 진행중입니다.</span>
+                        <span>아래 내용의 기능들을 사용하실 수 있습니다.</span>
+                        <div className="listDiv">
+                            <li>오늘의 날씨</li>
+                            <li>오늘의 영어</li>
+                        </div>
                     </div>
                 </div>
                 <div className="homeContainerBottom"></div>
