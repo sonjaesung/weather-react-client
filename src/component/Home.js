@@ -16,7 +16,7 @@ const Home = () => {
         let headerTitle = document.querySelector(".headTitle");
         headerTitle.innerText = "Home";
 
-        var timerID = setInterval(() => getTime(), 1000);
+        let timerID = setInterval(() => getTime(), 1000);
 
         return function cleanup() {
             clearInterval(timerID);

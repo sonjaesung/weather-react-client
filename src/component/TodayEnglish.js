@@ -118,6 +118,7 @@ const TodayEnglish = () => {
                 });
             } catch (err) {
                 alert('로그인 이후 사용 가능합니다');
+                window.location.href = './';
             }
         }
     };
