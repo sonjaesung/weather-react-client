@@ -85,6 +85,8 @@
 
 .login span {
     font-size: 20px;
+    text-align: center;
+    margin: 10px;
 }
 
 .homeBtnDiv .btn {
@@ -104,6 +106,12 @@
 .homeBtn:active, 
 .homeBtnDiv .btn:active {
     transform: translateY(2px);
+}
+
+.login .nameSpan {
+    font-size: 25px;
+    color: cornflowerblue;
+    font-weight: 600;
 }
 
 @media (min-width: 414px) { 

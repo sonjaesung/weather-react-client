@@ -36,6 +36,7 @@ const Home = () => {
         const pw = document.getElementById("pw").value;
         let loginDiv = document.querySelector(".login");
         let noneLoginDiv = document.querySelector(".noneLogin");
+        let userName = document.querySelector('#nameSpan');
 
         if (!validation(email, pw)) {
             return;
@@ -48,7 +49,6 @@ const Home = () => {
             })
             .then(function (res) {
                 let result = res.data;
-                console.log(res);
 
                 if(result === null)
                 {
@@ -61,6 +61,7 @@ const Home = () => {
                     alert(result.user.name + '님 환영합니다!!');
                     loginDiv.style.display = 'flex';
                     noneLoginDiv.style.display = 'none';
+                    userName.innerText = `${result.user.name}님 환영합니다!`;
                 }
             });
     };
@@ -78,12 +79,14 @@ const Home = () => {
     };
 
     const checkLogin = async () => {
+        
         let loginDiv = document.querySelector(".login");
         let noneLoginDiv = document.querySelector(".noneLogin");
+        let userName = document.querySelector('#nameSpan');
 
         try{
             await axios
-                .get(config.webHost + "/login" /*'http://localhost:3000/login'*/, {
+                .get(/*config.webHost + "/login"*/ 'http://localhost:3000/login', {
                     params: {
                         token: cookies.get('user'),
                     }
@@ -91,12 +94,14 @@ const Home = () => {
                 .then(function (res) {
                     loginDiv.style.display = 'flex';
                     noneLoginDiv.style.display = 'none';
+                    userName.innerText = `${res.data}님 환영합니다!`;
                 });
         }
         catch (err) {
             loginDiv.style.display = 'none';
             noneLoginDiv.style.display = 'flex';
         }
+        
     }
 
     return (
@@ -127,7 +132,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="login">
-                        <span id='nameSpan'></span>
+                        <span id='nameSpan' className='nameSpan'></span>
                         <span>해당 웹 페이지는 포트폴리오 작성으로 업데이트 진행중입니다.</span>
                         <span>아래 내용의 기능들을 사용하실 수 있습니다.</span>
                         <div className="listDiv">
