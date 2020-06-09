@@ -115,13 +115,13 @@ const Home = () => {
                             Login
                         </button>
                         <div className="homeBtnDiv">
-                            <Link className="linkStyle" to="/Join">
+                            <Link className="linkStyle" to="/join">
                                 <button className="btn">회원가입</button>
                             </Link>
-                            <Link className="linkStyle" to="/Find-Email">
+                            <Link className="linkStyle" to="/find-email">
                                 <button className="btn">이메일 찾기</button>
                             </Link>
-                            <Link className="linkStyle" to="/Reset-Pw">
+                            <Link className="linkStyle" to="/reset-pw">
                                 <button className="btn">비밀번호 재설정</button>
                             </Link>
                         </div>

@@ -7,6 +7,7 @@ import Footer from "./component/Footer";
 
 import Home from "./component/Home";
 import Join from "./component/Join";
+import FindEmail from './component/FindEmail';
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 import TodayEnglish from "./component/TodayEnglish";
@@ -114,6 +115,7 @@ const App = () => {
                 <LeftMenu />
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/join" component={Join} exact={true} />
+                <Route path="/find-email" component={FindEmail} exact={true} />
                 <Route
                     path="/weather"
                     render={() =>
