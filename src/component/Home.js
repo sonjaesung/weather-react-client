@@ -86,7 +86,7 @@ const Home = () => {
 
         try{
             await axios
-                .get(/*config.webHost + "/login"*/ 'http://localhost:3000/login', {
+                .get(config.webHost + "/login" /*'http://localhost:3000/login'*/, {
                     params: {
                         token: cookies.get('user'),
                     }
