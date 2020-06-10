@@ -73,27 +73,16 @@ const TodayEnglish = () => {
             tempArr = JSON.parse(localStorage.getItem("english"));
         }
 
-        /*
+        
         await axios
-            .post(config.webHost + "/todayEnglish", {
-                email,
-                pw,
+            .post(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
+                content: text
             })
             .then(function (res) {
                 let result = res.data;
-                console.log(res);
-
-                if(result === null)
-                {
-                    alert('로그인실패!! 다시 입력해 주세요');
-                }
-                else{
-                    cookies.set('user', result.token);
-                    //res.cookie("user", result.token);
-                    alert(result.user.name + '님 환영합니다!!');
-                }
+                console.log(result);
             });
-            */
+            
 
         tempArr.push(textObj);
         setEnglishArray(tempArr);
@@ -102,24 +91,28 @@ const TodayEnglish = () => {
     };
 
     const renderTodayEnglish = async () => {
-        if (todayEnglish !== "") {
-            document.querySelector("#todayEnglish").innerText = todayEnglish;
+        let englishList;
+
+        try{   
+            await axios
+            .get(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
+                params: {
+                    token: cookies.get('user'),
+                }
+            })
+            .then(function (res) {
+                englishList = res.data;
+                console.log(englishList)
+            });
+        } catch (err) {
+            alert('로그인 이후 사용 가능합니다');
+            window.location.href = './';
+        }
+
+        if (englishList.length !== 0) {
+            document.querySelector("#todayEnglish").innerText = englishList[0].content;
         } else {
-            try{   
-                await axios
-                .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
-                    params: {
-                        token: cookies.get('user'),
-                    }
-                })
-                .then(function (res) {
-                    console.log(res);
-                    setTodayEnglish();
-                });
-            } catch (err) {
-                alert('로그인 이후 사용 가능합니다');
-                window.location.href = './';
-            }
+            setTodayEnglish();
         }
     };
 
