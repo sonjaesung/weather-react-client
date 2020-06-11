@@ -11,7 +11,6 @@ const TodayEnglish = () => {
     const [englishArray, setEnglishArray] = useState([]);
     const cookies = new Cookies();
 
-
     const setLocalStorage = (data) => {
         localStorage.setItem("english", JSON.stringify(data));
     };
@@ -35,12 +34,14 @@ const TodayEnglish = () => {
         renderTodayEnglish();
     }, [todayEnglish]);
 
+    /*
     useEffect(() => {
         if (englishArray.length !== 0) {
             setLocalStorage(englishArray);
         }
         renderTodayEnglishList();
     }, [englishArray]);
+    */
 
     const cleanEnglish = () => {
         document.getElementById("englishTextArea").value = "";
@@ -61,6 +62,7 @@ const TodayEnglish = () => {
             return;
         }
 
+        
         let tempArr = new Array();
         const textObj = {
             date: new Date(),
@@ -72,10 +74,10 @@ const TodayEnglish = () => {
         if (localStorage.getItem("english") !== null) {
             tempArr = JSON.parse(localStorage.getItem("english"));
         }
-
         
         await axios
             .post(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
+                token: cookies.get('user'),
                 content: text
             })
             .then(function (res) {
@@ -87,6 +89,7 @@ const TodayEnglish = () => {
         tempArr.push(textObj);
         setEnglishArray(tempArr);
         setTodayEnglis(text);
+        
         document.getElementById("englishTextArea").value = "";
     };
 
@@ -111,17 +114,19 @@ const TodayEnglish = () => {
 
         if (englishList.length !== 0) {
             document.querySelector("#todayEnglish").innerText = englishList[0].content;
+            renderTodayEnglishList(englishList);
+
         } else {
             setTodayEnglish();
         }
     };
 
-    const renderTodayEnglishList = () => {
+    const renderTodayEnglishList = (englishList) => {
         let englishBottomContainer = document.querySelector(".englishBottomContainer");
         englishBottomContainer.innerText = "";
 
-        if (localStorage.getItem("english") !== null) {
-            JSON.parse(localStorage.getItem("english")).map((data) => {
+        if (englishList.length !== 0) {
+            englishList.map((data) => {
                 const containerDiv = document.createElement("div");
                 const contentDiv = document.createElement("div");
                 const btnDiv = document.createElement("div");
@@ -138,7 +143,7 @@ const TodayEnglish = () => {
 
                 containerDiv.style.marginTop = "10px";
                 containerDiv.style.marginBottom = "10px";
-                containerDiv.id = data.id;
+                containerDiv.id = data.seq;
                 containerDiv.className = "containerDiv";
 
                 contentDiv.className = "contentDiv";
