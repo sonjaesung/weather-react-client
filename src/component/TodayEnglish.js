@@ -76,7 +76,7 @@ const TodayEnglish = () => {
         }
         
         await axios
-            .post(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
+            .post(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
                 token: cookies.get('user'),
                 content: text
             })
@@ -98,7 +98,7 @@ const TodayEnglish = () => {
 
         try{   
             await axios
-            .get(/*config.webHost + "/todayEnglish"*/ 'http://localhost:3000/todayEnglish', {
+            .get(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
                 params: {
                     token: cookies.get('user'),
                 }
