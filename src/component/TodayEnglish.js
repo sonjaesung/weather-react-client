@@ -10,11 +10,15 @@ const TodayEnglish = () => {
     const [todayEnglish, setTodayEnglis] = useState("");
     const [englishArray, setEnglishArray] = useState([]);
     const cookies = new Cookies();
+    let tempArry = [];
 
+    /*
     const setLocalStorage = (data) => {
         localStorage.setItem("english", JSON.stringify(data));
     };
+    */
 
+    /*
     const setTodayEnglish = () => {
         if (localStorage.getItem("english") !== null && JSON.parse(localStorage.getItem("english")).length !== 0) {
             let localStorageobj = JSON.parse(localStorage.getItem("english"));
@@ -24,6 +28,7 @@ const TodayEnglish = () => {
             document.querySelector("#todayEnglish").innerText = "오늘의 영문장을 입력하세요";
         }
     };
+    */
 
     useEffect(() => {
         let headerTitle = document.querySelector(".headTitle");
@@ -71,9 +76,11 @@ const TodayEnglish = () => {
             check: false,
         };
 
+        /*
         if (localStorage.getItem("english") !== null) {
             tempArr = JSON.parse(localStorage.getItem("english"));
         }
+        */
         
         await axios
             .post(config.webHost + "/todayEnglish" /*'http://localhost:3000/todayEnglish'*/, {
@@ -87,7 +94,7 @@ const TodayEnglish = () => {
             
 
         tempArr.push(textObj);
-        setEnglishArray(tempArr);
+        // setEnglishArray(tempArr);
         setTodayEnglis(text);
         
         document.getElementById("englishTextArea").value = "";
@@ -113,10 +120,13 @@ const TodayEnglish = () => {
 
         if (englishList.length !== 0) {
             document.querySelector("#todayEnglish").innerText = englishList[0].content;
+            tempArry=englishList;
+            setEnglishArray(englishList);
             renderTodayEnglishList(englishList);
 
         } else {
-            setTodayEnglish();
+            // setTodayEnglish();
+            document.querySelector("#todayEnglish").innerText = "오늘의 영문장을 입력하세요";
         }
     };
 
@@ -182,10 +192,9 @@ const TodayEnglish = () => {
     const clickCheckBtn = (e) => {
         const span = e.target.parentNode.parentNode.querySelector(".contentDiv").querySelector("span");
         const delBtn = e.target.parentNode.querySelector(".deleteBtn");
-        const tempArry = JSON.parse(localStorage.getItem("english"));
 
         tempArry.map((data, count) => {
-            if (data.id === parseInt(e.target.parentNode.parentNode.id)) {
+            if (data.seq === parseInt(e.target.parentNode.parentNode.id)) {
                 tempArry[count].check = !tempArry[count].check;
 
                 span.style.textDecoration = tempArry[count].check ? "line-through" : "none";
@@ -193,18 +202,17 @@ const TodayEnglish = () => {
                 delBtn.style.display = tempArry[count].check ? "inline" : "none";
             }
         });
-        setLocalStorage(tempArry);
+        // setLocalStorage(tempArry);
     };
 
     const clickDeleteBtn = (e) => {
         const id = parseInt(e.target.parentNode.parentNode.id);
-        const tempArry = JSON.parse(localStorage.getItem("english"));
 
         let newLocalArray = tempArry.filter((data) => data.id !== id);
 
-        setEnglishArray(newLocalArray);
-        setLocalStorage(newLocalArray);
-        setTodayEnglish();
+        // setEnglishArray(newLocalArray);
+        // setLocalStorage(newLocalArray);
+        // setTodayEnglish();
     };
 
     return (
