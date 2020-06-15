@@ -142,4 +142,8 @@
         cursor: pointer;
         width: 100%;
     }
+
+    .login .nameSpan {
+        font-size: 35px;
+    }
 }

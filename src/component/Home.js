@@ -58,7 +58,6 @@ const Home = () => {
                 }
                 else{
                     cookies.set('user', result.token);
-                    alert(result.user.name + '님 환영합니다!!');
                     loginDiv.style.display = 'flex';
                     noneLoginDiv.style.display = 'none';
                     userName.innerText = `${result.user.name}님 환영합니다!`;
