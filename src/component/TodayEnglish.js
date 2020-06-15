@@ -89,7 +89,6 @@ const TodayEnglish = () => {
             })
             .then(function (res) {
                 let result = res.data;
-                console.log(result);
             });
             
 
@@ -189,26 +188,55 @@ const TodayEnglish = () => {
         }
     };
 
-    const clickCheckBtn = (e) => {
+    const clickCheckBtn = async (e) => {
         const span = e.target.parentNode.parentNode.querySelector(".contentDiv").querySelector("span");
         const delBtn = e.target.parentNode.querySelector(".deleteBtn");
+        let arraySelect;
 
         tempArry.map((data, count) => {
             if (data.seq === parseInt(e.target.parentNode.parentNode.id)) {
                 tempArry[count].check = !tempArry[count].check;
+                arraySelect=count;
 
                 span.style.textDecoration = tempArry[count].check ? "line-through" : "none";
                 span.style.color = tempArry[count].check ? "red" : "white";
                 delBtn.style.display = tempArry[count].check ? "inline" : "none";
             }
         });
+
+        await axios
+            .post(config.webHost + "/englishCheck" /*'http://localhost:3000/todayEnglish/englishCheck'*/, {
+                token: cookies.get('user'),
+                seq: e.target.parentNode.parentNode.id,
+                check: tempArry[arraySelect].check
+            });
+        
         // setLocalStorage(tempArry);
     };
 
-    const clickDeleteBtn = (e) => {
+    const clickDeleteBtn = async (e) => {
         const id = parseInt(e.target.parentNode.parentNode.id);
 
         let newLocalArray = tempArry.filter((data) => data.id !== id);
+        let arraySelect;
+
+        tempArry.map((data, count) => {
+            if (data.seq === parseInt(e.target.parentNode.parentNode.id)) {
+                tempArry[count].delete = true;
+                arraySelect=count;
+            }
+        });
+
+        await axios
+            .delete(config.webHost + "/englishDelete" /*'http://localhost:3000/todayEnglish/englishDelete'*/, {
+                data: {
+                token: cookies.get('user'),
+                seq: e.target.parentNode.parentNode.id,
+                delete: tempArry[arraySelect].delete
+            }
+        });
+            
+        window.location.reload();
 
         // setEnglishArray(newLocalArray);
         // setLocalStorage(newLocalArray);
