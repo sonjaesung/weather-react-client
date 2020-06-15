@@ -205,7 +205,7 @@ const TodayEnglish = () => {
         });
 
         await axios
-            .post(config.webHost + "/englishCheck" /*'http://localhost:3000/todayEnglish/englishCheck'*/, {
+            .post(config.webHost + "/todayEnglish/englishCheck" /*'http://localhost:3000/todayEnglish/englishCheck'*/, {
                 token: cookies.get('user'),
                 seq: e.target.parentNode.parentNode.id,
                 check: tempArry[arraySelect].check
@@ -228,7 +228,7 @@ const TodayEnglish = () => {
         });
 
         await axios
-            .delete(config.webHost + "/englishDelete" /*'http://localhost:3000/todayEnglish/englishDelete'*/, {
+            .delete(config.webHost + "/todayEnglish/englishDelete" /*'http://localhost:3000/todayEnglish/englishDelete'*/, {
                 data: {
                 token: cookies.get('user'),
                 seq: e.target.parentNode.parentNode.id,
