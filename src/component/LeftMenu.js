@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 import Header from "./Header";
 import "../css/LeftMenu.css";
 
 const LeftMenu = () => {
+    const cookies = new Cookies();
+
     const clickExitBtn = () => {
         let leftMenu = document.querySelector(".leftMenuDiv");
         leftMenu.style.width = "0%";
@@ -13,6 +16,16 @@ const LeftMenu = () => {
     const clickMenu = () => {
         let leftMenu = document.querySelector(".leftMenuDiv");
         leftMenu.style.width = "0%";
+    };
+
+    const clickLogout = () => {
+        cookies.remove(
+            "user",
+            { path: '/'}
+        );
+        let leftMenu = document.querySelector(".leftMenuDiv");
+        leftMenu.style.width = "0%";
+        window.location = ".";
     };
 
     return (
@@ -51,6 +64,11 @@ const LeftMenu = () => {
                         </Link>
                     </div>
                     */}
+                    <div className='menuContent' onClick={clickLogout}>
+                        <Link className='linkStyle' to="/">
+                            <span className='linkSpan'>로그아웃</span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </Fragment>
