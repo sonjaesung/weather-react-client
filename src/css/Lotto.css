@@ -1,0 +1,92 @@
+.lottoDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lottoHeadfContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lottoCenterContainer {
+    width: 100%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lottoBottomContainer {
+    width: 100%;
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.lottoTitleDiv {
+    margin-top: 20px;
+}
+
+.lottoNumDiv {
+    display: none;
+    margin-top: 10px;
+}
+
+.lottoNumDiv span {
+    height: 35px;
+    width: 35px;
+    margin: 3px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 31px;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+.lottoNumDiv label {
+    height: 35px;
+    width: 35px;
+    margin: 3px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 31px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.lottoInput {
+    margin: 10px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: blueviolet;
+    border-radius: 50px;
+    color: black;
+    padding: 5px;
+    text-align: center;
+}
+
+.lottoBtn {
+    margin: 10px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+@media (min-width: 414px) {
+}

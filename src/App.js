@@ -7,12 +7,13 @@ import Footer from "./component/Footer";
 
 import Home from "./component/Home";
 import Join from "./component/Join";
-import FindEmail from './component/FindEmail';
-import ResetPw from './component/ResetPw';
+import FindEmail from "./component/FindEmail";
+import ResetPw from "./component/ResetPw";
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 import TodayEnglish from "./component/TodayEnglish";
 import Bucketlist from "./component/Bucketlist";
+import Lotto from "./component/Lotto";
 
 import axios from "axios";
 
@@ -77,7 +78,7 @@ const App = () => {
                 getWeather(latitude, longitude);
             });
             */
-           getWeather(37.5, 127.1);
+            getWeather(37.5, 127.1);
         } catch (err) {
             alert(err);
         }
@@ -140,6 +141,7 @@ const App = () => {
                 <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
                 {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
                 <Route path="/bucketList" component={Bucketlist} exact={true} />
+                <Route path="/lotto" component={Lotto} exact={true} />
                 <Footer />
             </HashRouter>
         </Fragment>

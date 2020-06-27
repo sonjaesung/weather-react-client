@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 import Header from "./Header";
 import "../css/LeftMenu.css";
@@ -19,10 +19,7 @@ const LeftMenu = () => {
     };
 
     const clickLogout = () => {
-        cookies.remove(
-            "user",
-            { path: '/'}
-        );
+        cookies.remove("user", { path: "/" });
         let leftMenu = document.querySelector(".leftMenuDiv");
         leftMenu.style.width = "0%";
         window.location = ".";
@@ -44,27 +41,38 @@ const LeftMenu = () => {
                     </div>
                 </div>
                 <div className="menuBody">
-                    <div className='menuContent' onClick={clickMenu}>
-                        <Link className='linkStyle' to="/Weather">
-                            <span className='linkSpan'>오늘의 날씨</span>
-                            <img src={require(`../img/Clear.png`)} height="16" width="16" style={{marginLeft: 10}} />
+                    <div className="menuContent" onClick={clickMenu}>
+                        <Link className="linkStyle" to="/Weather">
+                            <span className="linkSpan">오늘의 날씨</span>
+                            <img src={require(`../img/Clear.png`)} height="16" width="16" style={{ marginLeft: 10 }} />
                         </Link>
                     </div>
-                    <div className='menuContent' onClick={clickMenu}>
-                        <Link className='linkStyle' to="/TodayEnglish">
-                            <span className='linkSpan'>오늘의 영어</span>
-                            <img src={require(`../img/English.png`)} height="20" width="23" style={{marginLeft: 10}} />
+                    <div className="menuContent" onClick={clickMenu}>
+                        <Link className="linkStyle" to="/TodayEnglish">
+                            <span className="linkSpan">오늘의 영어</span>
+                            <img
+                                src={require(`../img/English.png`)}
+                                height="20"
+                                width="23"
+                                style={{ marginLeft: 10 }}
+                            />
                         </Link>
                     </div>
-                    <div className='menuContent' onClick={clickMenu}>
-                        <Link className='linkStyle' to="/Bucketlist">
-                            <span className='linkSpan'>버킷리스트</span>
-                            <img src={require(`../img/Check.png`)} height="20" width="23" style={{marginLeft: 10}} />
+                    <div className="menuContent" onClick={clickMenu}>
+                        <Link className="linkStyle" to="/Bucketlist">
+                            <span className="linkSpan">버킷리스트</span>
+                            <img src={require(`../img/Check.png`)} height="20" width="23" style={{ marginLeft: 10 }} />
                         </Link>
                     </div>
-                    <div className='menuContent' onClick={clickLogout}>
-                        <Link className='linkStyle' to="/">
-                            <span className='linkSpan'>로그아웃</span>
+                    <div className="menuContent" onClick={clickMenu}>
+                        <Link className="linkStyle" to="/Lotto">
+                            <span className="linkSpan">로또 번호</span>
+                            <img src={require(`../img/Check.png`)} height="20" width="23" style={{ marginLeft: 10 }} />
+                        </Link>
+                    </div>
+                    <div className="menuContent" onClick={clickLogout}>
+                        <Link className="linkStyle" to="/">
+                            <span className="linkSpan">로그아웃</span>
                         </Link>
                     </div>
                 </div>
