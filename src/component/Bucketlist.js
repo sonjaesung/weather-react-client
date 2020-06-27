@@ -27,20 +27,23 @@ const Bucketlist = () => {
         <Fragment>
             <div className="bucketListDiv">
                 <div className="bucketHeadContainer">
-                    <img className="updateImg" id="updateImg" />
+                    <button className="bucketBtn">사진 추가</button>
+                    <button className="bucketBtn">내가 올린 사진</button>
                 </div>
                 <div className="bucketCenterContainer">
+                <img className="updateImg" id="updateImg" />
                     <input
                         type="file"
                         id="real-input"
-                        className="image_inputType_file"
+                        className="bucketBtn"
                         accept="img/*"
                         required
                         multiple
                         onChange={readInputFile}
                     />
                 </div>
-                <div className="bucketBottomContainer"></div>
+                <div className="bucketBottomContainer">
+                </div>
             </div>
         </Fragment>
     );
