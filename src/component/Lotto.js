@@ -94,6 +94,8 @@ const Lotto = () => {
             <div className="lottoDiv">
                 <div className="lottoHeadfContainer">
                     <h2>조회할 로또 회차를 입력하세요</h2>
+                    <span>번호를 입력하지않고 조회시</span>
+                    <span>최근 당첨번호가 조회됩니다</span>
                     <input className="lottoInput" id="lottoInput"></input>
                     <button className="lottoBtn" onClick={searchLotto}>
                         조회
