@@ -58,12 +58,14 @@ const LeftMenu = () => {
                             />
                         </Link>
                     </div>
+                    {/*
                     <div className="menuContent" onClick={clickMenu}>
                         <Link className="linkStyle" to="/Bucketlist">
                             <span className="linkSpan">버킷리스트</span>
                             <img src={require(`../img/Check.png`)} height="20" width="23" style={{ marginLeft: 10 }} />
                         </Link>
                     </div>
+                    */}
                     <div className="menuContent" onClick={clickMenu}>
                         <Link className="linkStyle" to="/Lotto">
                             <span className="linkSpan">로또 번호</span>

@@ -18,7 +18,7 @@ const Lotto = () => {
     const renderLotto = async () => {
         try {
             await axios
-                .get(/*config.webHost + "/lotto"*/ "http://localhost:3000/lotto", {
+                .get(config.webHost + "/lotto" /*"http://localhost:3000/lotto"*/, {
                     params: {
                         token: cookies.get("user"),
                     },
