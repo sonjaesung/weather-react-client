@@ -1,16 +1,15 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
-import config from '../config/config';
+import config from "../config/config";
 
 import "../css/Home.css";
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const cookies = new Cookies();
-
 
     useEffect(() => {
         let headerTitle = document.querySelector(".headTitle");
@@ -36,7 +35,7 @@ const Home = () => {
         const pw = document.getElementById("pw").value;
         let loginDiv = document.querySelector(".login");
         let noneLoginDiv = document.querySelector(".noneLogin");
-        let userName = document.querySelector('#nameSpan');
+        let userName = document.querySelector("#nameSpan");
 
         if (!validation(email, pw)) {
             return;
@@ -50,16 +49,14 @@ const Home = () => {
             .then(function (res) {
                 let result = res.data;
 
-                if(result === null)
-                {
-                    alert('로그인실패!! 다시 입력해 주세요');
-                    loginDiv.style.display = 'none';
-                    noneLoginDiv.style.display = 'flex';
-                }
-                else{
-                    cookies.set('user', result.token);
-                    loginDiv.style.display = 'flex';
-                    noneLoginDiv.style.display = 'none';
+                if (result === null) {
+                    alert("로그인실패!! 다시 입력해 주세요");
+                    loginDiv.style.display = "none";
+                    noneLoginDiv.style.display = "flex";
+                } else {
+                    cookies.set("user", result.token);
+                    loginDiv.style.display = "flex";
+                    noneLoginDiv.style.display = "none";
                     userName.innerText = `${result.user.name}님 환영합니다!`;
                 }
             });
@@ -78,30 +75,27 @@ const Home = () => {
     };
 
     const checkLogin = async () => {
-        
         let loginDiv = document.querySelector(".login");
         let noneLoginDiv = document.querySelector(".noneLogin");
-        let userName = document.querySelector('#nameSpan');
+        let userName = document.querySelector("#nameSpan");
 
-        try{
+        try {
             await axios
                 .get(config.webHost + "/login" /*'http://localhost:3000/login'*/, {
                     params: {
-                        token: cookies.get('user'),
-                    }
+                        token: cookies.get("user"),
+                    },
                 })
                 .then(function (res) {
-                    loginDiv.style.display = 'flex';
-                    noneLoginDiv.style.display = 'none';
+                    loginDiv.style.display = "flex";
+                    noneLoginDiv.style.display = "none";
                     userName.innerText = `${res.data}님 환영합니다!`;
                 });
+        } catch (err) {
+            loginDiv.style.display = "none";
+            noneLoginDiv.style.display = "flex";
         }
-        catch (err) {
-            loginDiv.style.display = 'none';
-            noneLoginDiv.style.display = 'flex';
-        }
-        
-    }
+    };
 
     return (
         <Fragment>
@@ -113,6 +107,9 @@ const Home = () => {
                 </div>
                 <div className="homeContainerCenter">
                     <div className="noneLogin">
+                        <span>Test 계정입니다</span>
+                        <span>ID : loki92@naver.com</span>
+                        <span>PW : 123321</span>
                         <input placeholder="E-Mail 을 입력하세요" type="email" className="homeInput" id="email" />
                         <input placeholder="비밀번호를 입력하세요" type="password" className="homeInput" id="pw" />
                         <button className="loginBtn" onClick={clickLogin}>
@@ -131,12 +128,13 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="login">
-                        <span id='nameSpan' className='nameSpan'></span>
+                        <span id="nameSpan" className="nameSpan"></span>
                         <span>해당 웹 페이지는 포트폴리오 작성으로 업데이트 진행중입니다.</span>
                         <span>아래 내용의 기능들을 사용하실 수 있습니다.</span>
                         <div className="listDiv">
                             <li>오늘의 날씨</li>
                             <li>오늘의 영어</li>
+                            <li>로또번호 조회</li>
                         </div>
                     </div>
                 </div>
